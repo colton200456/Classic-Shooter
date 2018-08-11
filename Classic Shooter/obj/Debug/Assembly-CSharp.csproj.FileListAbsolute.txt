@@ -166,3 +166,7 @@ C:\Users\pierl\Documents\Classic-Shooter\Classic Shooter\obj\Debug\Assembly-CSha
 C:\Users\pierl\Documents\Classic-Shooter\Classic Shooter\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\pierl\Documents\Classic-Shooter\Classic Shooter\obj\Debug\Assembly-CSharp.dll
 C:\Users\pierl\Documents\Classic-Shooter\Classic Shooter\obj\Debug\Assembly-CSharp.pdb
+C:\Users\colton200456\Desktop\Classic-Shooter-master\Classic-Shooter-master\Classic Shooter\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\colton200456\Desktop\Classic-Shooter-master\Classic-Shooter-master\Classic Shooter\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\colton200456\Desktop\Classic-Shooter-master\Classic-Shooter-master\Classic Shooter\obj\Debug\Assembly-CSharp.dll
+C:\Users\colton200456\Desktop\Classic-Shooter-master\Classic-Shooter-master\Classic Shooter\obj\Debug\Assembly-CSharp.pdb
