@@ -4,31 +4,93 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float speed;
+    //public float speed;
 
 
-    protected Rigidbody MyRb;
+    //protected Rigidbody MyRb;
 
-    // Use this for initialization
-    void Start()
+    //// Use this for initialization
+    //void Start()
+    //{
+    //    MyRb = GetComponent<Rigidbody>();
+    //}
+
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    float x = Input.GetAxis("Horizontal");
+    //    float y = Input.GetAxis("Vertical");
+
+    //    transform.Translate(x * Time.deltaTime * speed, y * Time.deltaTime * speed, 0.0f, Space.World);
+
+    //    #warning THIS ISN'T WORKING, NEED TO DEBUG WHY?  http://wiki.unity3d.com/index.php/Xbox360Controller
+    //    float rx = Input.GetAxis("RightStickHorizontal");
+    //    float ry = Input.GetAxis("RightStickVertical");
+
+    //    float angle = Mathf.Atan2(rx, ry);
+
+    //    transform.rotation = Quaternion.Euler(0, angle, 0);
+    //}
+
+    public Transform bulletShot;
+
+    void start()
     {
-        MyRb = GetComponent<Rigidbody>();
+        float rightStickx = Input.GetAxis("Right_Horizontal");
+        float rightSticky = Input.GetAxis("Right_Vertical");
+
+        if (rightStickx > .2)
+        {
+            rightStickx = 5;
+        }
+        if (rightStickx < -.2)
+        {
+            rightStickx = -5;
+        }
+        if (rightSticky > .2)
+        {
+            rightSticky = 5;
+        }
+        if (rightSticky < -.2)
+        {
+            rightSticky = -5;
+        }
+        GetComponent<Rigidbody>().velocity = new Vector3(rightStickx, rightSticky, 0);
+
     }
 
-    // Update is called once per frame
+    public float speed = 2.0f;
+
     void Update()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        float leftStickx = Input.GetAxis("Horizontal");
+        float leftSticky = Input.GetAxis("Vertical");
 
-        transform.Translate(x * Time.deltaTime * speed, y * Time.deltaTime * speed, 0.0f, Space.World);
+        transform.Translate(leftStickx * Time.deltaTime * speed, leftSticky * Time.deltaTime * speed, 0, Space.World);
 
-        #warning THIS ISN'T WORKING, NEED TO DEBUG WHY?  http://wiki.unity3d.com/index.php/Xbox360Controller
-        float rx = Input.GetAxis("RightStickHorizontal");
-        float ry = Input.GetAxis("RightStickVertical");
+        float rightStickx = Input.GetAxis("Right_Horizontal");
+        float rightSticky = Input.GetAxis("Right_Vertical");
 
-        float angle = Mathf.Atan2(rx, ry);
 
-        transform.rotation = Quaternion.Euler(0, angle, 0);
+        float angle = Mathf.Atan2(rightStickx, rightSticky) * Mathf.Rad2Deg;
+        //if (rightStickx  || rightSticky != sensitivity)
+        //{
+        transform.rotation = Quaternion.Euler(rightStickx, rightSticky, angle);
+        //transform.rotation = Quaternion.Angle(leftStickx, leftSticky);
+        // }
+        GetComponent<Rigidbody2D>().velocity = new Vector2(3 * leftStickx, 3 * leftSticky);
+
+
+        if (rightStickx > .2 || rightStickx < -.2)
+        {
+            Instantiate(bulletShot, transform.position, bulletShot.rotation);
+        }
+
+        if (rightSticky > .2 || rightSticky < -.2)
+        {
+            Instantiate(bulletShot, transform.position, bulletShot.rotation);
+
+
+        }
     }
 }
