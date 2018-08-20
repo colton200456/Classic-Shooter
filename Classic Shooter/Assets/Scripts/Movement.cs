@@ -33,29 +33,10 @@ public class Movement : MonoBehaviour
     //}
 
     public Transform bulletShot;
+    public float shotDelay;
 
     void start()
     {
-        float rightStickx = Input.GetAxis("Right_Horizontal");
-        float rightSticky = Input.GetAxis("Right_Vertical");
-
-        if (rightStickx > .2)
-        {
-            rightStickx = 5;
-        }
-        if (rightStickx < -.2)
-        {
-            rightStickx = -5;
-        }
-        if (rightSticky > .2)
-        {
-            rightSticky = 5;
-        }
-        if (rightSticky < -.2)
-        {
-            rightSticky = -5;
-        }
-        GetComponent<Rigidbody>().velocity = new Vector3(rightStickx, rightSticky, 0);
 
     }
 
@@ -81,16 +62,26 @@ public class Movement : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(3 * leftStickx, 3 * leftSticky);
 
 
-        if (rightStickx > .2 || rightStickx < -.2)
+        if (((rightStickx > .2 || rightStickx < -.2)) && (shotDelay == 0))
         {
+            shotDelay = 1;
             Instantiate(bulletShot, transform.position, bulletShot.rotation);
+            StartCoroutine(delayRest());
         }
 
-        if (rightSticky > .2 || rightSticky < -.2)
+        if (((rightSticky > .2 || rightSticky < -.2)) && (shotDelay == 0))
         {
+            shotDelay = 1;
             Instantiate(bulletShot, transform.position, bulletShot.rotation);
-
-
+            StartCoroutine(delayRest());
         }
+    }
+
+    IEnumerator delayRest()
+    {
+        yield return new WaitForSeconds(.6f);
+        shotDelay = 0;
+         
+
     }
 }
