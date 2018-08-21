@@ -35,11 +35,6 @@ public class Movement : MonoBehaviour
     public Transform bulletShot;
     public float shotDelay;
 
-    void start()
-    {
-
-    }
-
     public float speed = 2.0f;
 
     void Update()
@@ -81,7 +76,5 @@ public class Movement : MonoBehaviour
     {
         yield return new WaitForSeconds(.6f);
         shotDelay = 0;
-         
-
     }
 }
