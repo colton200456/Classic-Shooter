@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour {
             rightSticky = -5;
             shotRotation = 0;
         }
-        GetComponent<Rigidbody2D>().velocity = new Vector3(rightStickx, rightSticky, 0);
+        GetComponent<Rigidbody2D>().velocity = new Vector3(-rightStickx, rightSticky, 0);
         GetComponent<Transform>().eulerAngles = new Vector3(0, 0, shotRotation);
     }
 }
