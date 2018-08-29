@@ -36,17 +36,42 @@ public class Movement : MonoBehaviour
     public float shotDelay;
 
     public float speed = 2.0f;
+    //public float shipRotation;
 
     void Update()
     {
         float leftStickx = Input.GetAxis("Horizontal");
         float leftSticky = Input.GetAxis("Vertical");
 
+        //if (leftStickx > .2)
+        //{
+        //    leftStickx = 2;
+        //    shipRotation = 90;
+        //}
+        //if (leftStickx < -.2)
+        //{
+        //    leftStickx = -2;
+        //    shipRotation = -90;
+        //}
+        //if (leftSticky > .2)
+        //{
+        //    leftSticky = 2;
+        //    shipRotation = 180;
+        //}
+        //if (leftSticky < -.2)
+        //{
+        //    leftSticky = -2;
+        //    shipRotation = 0;
+        //}
+        //GetComponent<Rigidbody2D>().velocity = new Vector3(-leftStickx, leftSticky, 0);
+        //GetComponent<Transform>().eulerAngles = new Vector3(0, 0, shipRotation);
+
         transform.Translate(leftStickx * Time.deltaTime * speed, leftSticky * Time.deltaTime * speed, 0, Space.World);
+
 
         float rightStickx = Input.GetAxis("Right_Horizontal");
         float rightSticky = Input.GetAxis("Right_Vertical");
-
+        
 
         float angle = Mathf.Atan2(rightStickx, rightSticky) * Mathf.Rad2Deg;
         //if (rightStickx  || rightSticky != sensitivity)
