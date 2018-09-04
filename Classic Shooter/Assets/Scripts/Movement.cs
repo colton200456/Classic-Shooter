@@ -31,17 +31,18 @@ public class Movement : MonoBehaviour
 
         Debug.Log("rightstickx : " + rightStickx + ", " + rightSticky);
   
-        if (rightStickx != 0f || rightSticky != 0f)
-        {
-            Debug.Log("rotation to shooting");
-            float angle = Mathf.Atan2(rightStickx, rightSticky) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(rightStickx, rightSticky, angle);
-        }
-        else if (leftStickx != 0f || leftSticky != 0f)
+        //if (rightStickx != 0f || rightSticky != 0f)
+        //{
+        //    Debug.Log("rotation to shooting");
+        //    float angle = Mathf.Atan2(rightStickx, rightSticky) * Mathf.Rad2Deg;
+        //    transform.rotation = Quaternion.Euler(rightStickx, rightSticky, angle);
+        //}
+        //else
+         if (leftStickx != 0f || leftSticky != 0f)
         {
             Debug.Log("rotation to movement");
-            float angle = Mathf.Atan2(leftStickx, leftSticky) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(leftStickx, leftSticky, angle);
+            float angle = Mathf.Atan2(-leftStickx, leftSticky) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(-leftStickx, leftSticky, angle);
         }
         body.velocity = new Vector2(3 * leftStickx, 3 * leftSticky);
 
