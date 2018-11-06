@@ -29,7 +29,6 @@ public class Movement : MonoBehaviour
         float rightStickx = Input.GetAxis("Right_Horizontal");
         float rightSticky = Input.GetAxis("Right_Vertical");
 
-        Debug.Log("rightstickx : " + rightStickx + ", " + rightSticky);
   
         //if (rightStickx != 0f || rightSticky != 0f)
         //{
@@ -40,7 +39,7 @@ public class Movement : MonoBehaviour
         //else
          if (leftStickx != 0f || leftSticky != 0f)
         {
-            Debug.Log("rotation to movement");
+            //Debug.Log("rotation to movement");
             float angle = Mathf.Atan2(-leftStickx, leftSticky) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(-leftStickx, leftSticky, angle);
         }

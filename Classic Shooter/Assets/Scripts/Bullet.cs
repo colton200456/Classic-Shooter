@@ -8,6 +8,16 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
+        InitializeBulletMovement();
+    }
+
+    private void OnEnable()
+    {
+        InitializeBulletMovement();
+    }
+
+    void InitializeBulletMovement()
+    {
         float rightStickx = Input.GetAxis("Right_Horizontal");
         float rightSticky = Input.GetAxis("Right_Vertical");
 
@@ -32,6 +42,7 @@ public class Bullet : MonoBehaviour
             shotRotation = 0;
         }
         GetComponent<Rigidbody2D>().velocity = new Vector3(-rightStickx, rightSticky, 0);
+        Debug.Log(string.Format("rightstick x : {0}, rightstick y : {1}", -rightStickx, rightSticky));
         GetComponent<Transform>().eulerAngles = new Vector3(0, 0, shotRotation);
     }
 
