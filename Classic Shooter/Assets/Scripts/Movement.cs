@@ -29,22 +29,21 @@ public class Movement : MonoBehaviour
         float rightStickx = Input.GetAxis("Right_Horizontal");
         float rightSticky = Input.GetAxis("Right_Vertical");
 
-  
+
         //if (rightStickx != 0f || rightSticky != 0f)
         //{
         //    Debug.Log("rotation to shooting");
         //    float angle = Mathf.Atan2(rightStickx, rightSticky) * Mathf.Rad2Deg;
         //    transform.rotation = Quaternion.Euler(rightStickx, rightSticky, angle);
         //}
-        //else
-         if (leftStickx != 0f || leftSticky != 0f)
+
+        if (leftStickx != 0f || leftSticky != 0f)
         {
             //Debug.Log("rotation to movement");
             float angle = Mathf.Atan2(-leftStickx, leftSticky) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(-leftStickx, leftSticky, angle);
         }
-        body.velocity = new Vector2(3 * leftStickx, 3 * leftSticky);
-
+        body.velocity = new Vector2(1 * leftStickx, 1 * leftSticky);
 
         if (((rightStickx > .2 || rightStickx < -.2)) && (shotDelay == 0))
         {
@@ -63,7 +62,7 @@ public class Movement : MonoBehaviour
 
     IEnumerator delayRest()
     {
-        yield return new WaitForSeconds(.6f);
+        yield return new WaitForSeconds(.25f);
         shotDelay = 0;
     }
     void CreateBullet()
