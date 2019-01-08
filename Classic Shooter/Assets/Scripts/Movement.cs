@@ -59,12 +59,13 @@ public class Movement : MonoBehaviour
             StartCoroutine(delayRest());
         }
         // pls work....
-        if (leftStickx == 0f || leftSticky == 0f) {
-            float angle = 0;
-            transform.rotation = Quaternion.Euler(leftStickx, leftSticky, angle);
-        }
-        body.velocity = new Vector2(0 * leftStickx, 0 * leftSticky);
-        
+        //if (leftStickx == 0f || leftSticky == 0f)
+        //{
+        //    float angle = 1;
+        //    transform.rotation = Quaternion.Euler(leftStickx, leftSticky, angle);
+
+        //    body.velocity = new Vector2(1 * leftStickx, 1 * leftSticky);
+        //}
     }
 
     IEnumerator delayRest()
