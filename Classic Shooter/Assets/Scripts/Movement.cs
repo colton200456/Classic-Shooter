@@ -43,6 +43,13 @@ public class Movement : MonoBehaviour
             float angle = Mathf.Atan2(-leftStickx, leftSticky) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(-leftStickx, leftSticky, angle);
         }
+
+        // pls work....
+        else if(leftStickx == 0f && leftSticky == 0f)
+        {
+            float angle = 1;
+            transform.rotation = Quaternion.Euler(-leftStickx, leftSticky, angle);
+        }
         body.velocity = new Vector2(1 * leftStickx, 1 * leftSticky);
 
         if (((rightStickx > .2 || rightStickx < -.2)) && (shotDelay == 0))
@@ -58,14 +65,7 @@ public class Movement : MonoBehaviour
             CreateBullet();
             StartCoroutine(delayRest());
         }
-        // pls work....
-        //if (leftStickx == 0f || leftSticky == 0f)
-        //{
-        //    float angle = 1;
-        //    transform.rotation = Quaternion.Euler(leftStickx, leftSticky, angle);
 
-        //    body.velocity = new Vector2(1 * leftStickx, 1 * leftSticky);
-        //}
     }
 
     IEnumerator delayRest()
