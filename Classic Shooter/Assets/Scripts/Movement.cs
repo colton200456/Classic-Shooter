@@ -50,7 +50,7 @@ public class Movement : MonoBehaviour
             float angle = 1;
             transform.rotation = Quaternion.Euler(-leftStickx, leftSticky, angle);
         }
-        body.velocity = new Vector2(1 * leftStickx, 1 * leftSticky);
+                    body.velocity = new Vector2(1 * leftStickx, 1 * leftSticky);
 
         if (((rightStickx > .2 || rightStickx < -.2)) && (shotDelay == 0))
         {
