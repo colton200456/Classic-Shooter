@@ -33,7 +33,13 @@ public class Enemy : MonoBehaviour {
 
         //}
 
-        transform.LookAt(Player);
+        Vector3 diff = Player.position - transform.position;
+        diff.Normalize();
+
+        float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+
+        //transform.LookAt(Player);
         transform.Translate(Vector3.forward * 5 * Time.deltaTime);
 
 
