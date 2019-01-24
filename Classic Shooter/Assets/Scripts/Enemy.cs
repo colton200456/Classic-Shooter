@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour
+{
 
     public Transform Player;
     int MoveSpeed = 4;
@@ -17,22 +18,6 @@ public class Enemy : MonoBehaviour {
 
     void Update()
     {
-        //transform.LookAt(Player);
-
-        //if (Vector3.Distance(transform.position, Player.position) >= MinDist)
-        //{
-
-        //    transform.position += transform.forward * MoveSpeed * Time.deltaTime;
-
-
-
-        //    if (Vector3.Distance(transform.position, Player.position) <= MaxDist)
-        //    {
-        //        //Here Call any function U want Like Shoot at here or something
-        //    }
-
-        //}
-
         Vector3 diff = Player.position - transform.position;
         diff.Normalize();
 
@@ -40,9 +25,21 @@ public class Enemy : MonoBehaviour {
         transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
 
         //transform.LookAt(Player);
-        transform.Translate(Vector3.forward * 5 * Time.deltaTime);
-
-
+        transform.Translate(transform.position * 5 * Time.deltaTime);
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "bullet")
+        {
+            collision.gameObject.SetActive(false);
+            Explode();
+        }
+    }
+
+    public void Explode()
+    {
+        Debug.Log("SHIP DESTROYED");
+        gameObject.SetActive(false);
+    }
 }
